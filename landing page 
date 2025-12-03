@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Stake Referral for High Rollers & Whales</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Switched to a more elegant font stack */
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a; /* Darker background for deeper luxury */
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #111111;
+            padding: 60px 0; /* Increased padding for grandeur */
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-100px);
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out; /* Longer, smoother ease-in-out */
+            will-change: opacity, transform; /* Optimize for smoothness */
+        }
+        header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        header h1 {
+            font-size: 56px; /* Larger for impact */
+            margin: 0;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Subtle gold glow */
+        }
+        header p {
+            font-size: 28px;
+            margin: 15px 0 0;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1200x600/000000/ffd700?text=High+Roller+Exclusive') no-repeat center center/cover;
+            padding: 120px 0; /* Taller hero for presence */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            will-change: background-position; /* For smooth parallax */
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); /* Overlay for depth */
+            z-index: 1;
+        }
+        .hero > .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h2, .hero p, .hero .cta-button {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Smoother, longer duration */
+            will-change: opacity, transform;
+        }
+        .hero.visible h2 {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.3s;
+        }
+        .hero.visible p {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.6s;
+        }
+        .hero.visible .cta-button {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.9s;
+        }
+        .hero .cta-button {
+            background-color: #ffd700;
+            color: #000000;
+            padding: 20px 40px; /* Larger button */
+            font-size: 24px;
+            text-decoration: none;
+            border-radius: 50px; /* Pill shape for modernity */
+            transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Smoother transitions */
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); /* Initial shadow */
+            will-change: transform, box-shadow;
+        }
+        .hero .cta-button:hover {
+            background-color: #ffec8b;
+            transform: scale(1.1) translateY(-5px); /* Lift effect */
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6); /* Enhanced glow */
+        }
+        .benefits {
+            padding: 80px 0;
+            background-color: #111111;
+        }
+        .benefits h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Smoother */
+            will-change: opacity;
+        }
+        .benefits.visible h2 {
+            opacity: 1;
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* More spacing for luxury */
+        }
+        .benefit {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px) rotate(-2deg); /* Slight tilt for dynamic entry */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out, box-shadow 0.5s ease-in-out; /* Smoother, unified easing */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            will-change: opacity, transform, box-shadow;
+        }
+        .benefit.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(0);
+        }
+        .benefit:hover {
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2); /* Gold glow on hover */
+            transform: translateY(-10px) rotate(0);
+        }
+        .benefit h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #111111, #0a0a0a); /* Gradient for depth */
+        }
+        .testimonials h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            will-change: opacity;
+        }
+        .testimonials.visible h2 {
+            opacity: 1;
+        }
+        .testimonial {
+            background-color: #151515;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-style: italic;
+            opacity: 0;
+            transform: translateX(-50px); /* Slide in from left */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smoother */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            will-change: opacity, transform, box-shadow;
+        }
+        .testimonial.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .testimonial:hover {
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.1);
+        }
+        .testimonial cite {
+            display: block;
+            text-align: right;
+            font-style: normal;
+            margin-top: 15px;
+            color: #ffd700;
+        }
+        footer {
+            background-color: #111111;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out; /* Longer for smooth fade */
+            will-change: opacity, transform;
+        }
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+            transition: color 0.5s ease-in-out;
+        }
+        footer a:hover {
+            color: #ffec8b;
+        }
+        /* Keyframe for subtle sparkle effect on hero */
+        @keyframes sparkle {
+            0% { opacity: 0; }
+            50% { opacity: 0.3; } /* Reduced intensity for subtlety */
+            100% { opacity: 0; }
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: sparkle 6s infinite ease-in-out; /* Slower animation */
+            z-index: 1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Join the Elite at Stake</h1>
+            <p>Exclusive Referral for High Rollers and Whales</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Unlock VIP Perks with My Referral Code</h2>
+            <p>As a high roller, you deserve the best. Sign up via my referral and get instant access to boosted bonuses, higher limits, and personalized rewards tailored for whales like you.</p>
+            <a href="https://bit.ly/highrollerwhale" class="cta-button">Claim Your Exclusive Bonus Now</a>
+            <p style="margin-top: 15px;">Use Code: Whale25</p>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2>Why Choose Stake for High Stakes Play?</h2>
+            <div class="benefit-grid">
+                <div class="benefit">
+                    <h3>Unlimited Betting Limits</h3>
+                    <p>Bet big without restrictions. Perfect for whales chasing massive wins.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Exclusive VIP Rewards</h3>
+                    <p>Personalized bonuses, cashback, and rakeback rates that scale with your play.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Fast Crypto Withdrawals</h3>
+                    <p>Instant payouts in BTC, ETH, and more – no delays for your winnings.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Premium Games & Slots</h3>
+                    <p>Access to high-volatility games from top providers, designed for big bettors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Fellow High Rollers Say</h2>
+            <div class="testimonial">
+                "Stake's referral program hooked me up with insane bonuses. As a whale, this is my go-to platform."
+                <cite>- Pro Gambler X</cite>
+            </div>
+            <div class="testimonial">
+                "High limits and quick cashouts make Stake unbeatable for serious players."
+                <cite>- Whale Y</cite>
+            </div>
+            <div class="testimonial">
+                "The VIP treatment is real – thanks to this referral, I'm rolling higher than ever."
+                <cite>- High Roller Z</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Stake Referral. All rights reserved. <a href="https://stake.us">Visit Stake.us</a></p>
+            <p>Gambling responsibly. 18+ only.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in header on load with delay for drama
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const header = document.querySelector('header');
+                header.classList.add('visible');
+            }, 500);
+
+            // Animate hero elements
+            setTimeout(() => {
+                const hero = document.querySelector('.hero');
+                hero.classList.add('visible');
+            }, 800);
+        });
+
+        // Intersection Observer for scroll animations with thresholds for earlier trigger
+        const options = {
+            root: null,
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // For benefits and testimonials, animate children sequentially with more delay
+                    if (entry.target.classList.contains('benefit-grid')) {
+                        const benefits = entry.target.querySelectorAll('.benefit');
+                        benefits.forEach((benefit, index) => {
+                            setTimeout(() => {
+                                benefit.classList.add('visible');
+                            }, index * 200); // Reduced stagger for smoother flow
+                        });
+                    } else if (entry.target.classList.contains('testimonials')) {
+                        const testimonials = entry.target.querySelectorAll('.testimonial');
+                        testimonials.forEach((testimonial, index) => {
+                            setTimeout(() => {
+                                testimonial.classList.add('visible');
+                            }, index * 200); // Reduced stagger
+                        });
+                        entry.target.querySelector('h2').classList.add('visible');
+                    } else if (entry.target.classList.contains('benefits')) {
+                        entry.target.querySelector('h2').classList.add('visible');
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        // Observe sections
+        observer.observe(document.querySelector('.benefits'));
+        observer.observe(document.querySelector('.benefit-grid'));
+        observer.observe(document.querySelector('.testimonials'));
+        observer.observe(document.querySelector('footer'));
+
+        // Simple parallax for hero background with requestAnimationFrame for ultra-smoothness
+        let lastScroll = 0;
+        const parallax = () => {
+            const scrollPosition = window.pageYOffset;
+            if (Math.abs(scrollPosition - lastScroll) > 0) { // Only update if changed
+                const hero = document.querySelector('.hero');
+                hero.style.backgroundPositionY = `${scrollPosition * 0.3}px`;
+                lastScroll = scrollPosition;
+            }
+            requestAnimationFrame(parallax);
+        };
+        parallax();
+    </script>
+</body>
+</html>
