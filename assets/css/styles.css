@@ -1,6 +1,7 @@
 /*
- * DopeLife typography: a quiet, invitation-only editorial aesthetic.
- * System fonts only: no third-party font requests, tracking, or layout flashes.
+ * DopeLife type system: Cinzel display + Cormorant editorial + Manrope body.
+ * Google Fonts are loaded via index.html with font-display: swap and system
+ * fallback faces when network access or remote fonts are unavailable.
  */
 :root {
     color-scheme: dark;
@@ -13,9 +14,9 @@
     --champagne: #dfc78f;
     --champagne-light: #f2ddb0;
     --line: rgba(223, 199, 143, 0.26);
-    --serif: "Iowan Old Style", "Baskerville", "Palatino Linotype",
-             "Book Antiqua", Georgia, serif;
-    --sans: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Cinzel", "Copperplate", Georgia, serif;
+    --editorial: "Cormorant Garamond", "Baskerville", Georgia, serif;
+    --sans: "Manrope", "Avenir Next", "Segoe UI", Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -52,10 +53,11 @@ header h1 {
     margin: 0 auto;
     color: var(--champagne-light);
     font-family: var(--serif);
-    font-size: clamp(2.9rem, 7.6vw, 6.4rem);
-    font-weight: 400;
-    letter-spacing: -0.025em;
-    line-height: 1.08;
+    font-size: clamp(2.2rem, 6.5vw, 5.4rem);
+    font-weight: 500;
+    letter-spacing: 0.075em;
+    line-height: 1.24;
+    text-transform: uppercase;
     text-wrap: balance;
 }
 
@@ -95,10 +97,10 @@ header p {
     margin: 0 auto;
     color: var(--ivory);
     font-family: var(--serif);
-    font-size: clamp(2.2rem, 5vw, 4.1rem);
+    font-size: clamp(1.9rem, 4.4vw, 3.6rem);
     font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.17;
+    letter-spacing: 0.035em;
+    line-height: 1.32;
     text-wrap: balance;
 }
 
@@ -184,10 +186,10 @@ header p {
     margin: 0 0 0.9rem;
     color: var(--champagne);
     font-family: var(--serif);
-    font-size: clamp(1.45rem, 2.6vw, 1.85rem);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.23;
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
 }
 
 .benefit p {
@@ -208,10 +210,11 @@ header p {
     border-left: 1px solid var(--champagne);
     background: rgba(255, 255, 255, 0.025);
     color: var(--ivory);
-    font-family: var(--serif);
-    font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+    font-family: var(--editorial);
+    font-size: clamp(1.45rem, 2.9vw, 2rem);
     font-style: italic;
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.48;
 }
 
 .testimonial cite {
@@ -270,7 +273,8 @@ a:focus-visible {
 
 @media (max-width: 480px) {
     .container { width: min(calc(100% - 2rem), 1100px); }
-    header p { letter-spacing: 0.13em; }
+    header h1 { font-size: clamp(1.95rem, 7.1vw, 2.6rem); letter-spacing: 0.045em; }
+    header p { letter-spacing: 0.10em; }
     .hero::before { inset: 0.75rem; }
     .hero .cta-button { padding: 1rem 1.15rem; letter-spacing: 0.08em; }
     .referral-code { letter-spacing: 0.11em; }
