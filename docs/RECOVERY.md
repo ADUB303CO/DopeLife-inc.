@@ -29,18 +29,23 @@ GitHub Actions runs. The original source remains available in Git history.
 - Removed load-delay visibility gates and the permanent parallax animation loop.
 - Replaced the external placeholder image with a CSS background.
 
-## Unresolved content and release items
+## Content review and outstanding release items
 
-The recovery retains legacy body text and outbound destinations without endorsing
-them. These are not completed campaign updates:
+On October 17, 2026 the owner reported reviewing and verifying the promotional
+content. This is an owner statement, not an independent check of referral links,
+operator terms, claims, or legal eligibility. The recovery retains the original
+copy and outbound destinations; no new campaign assets or substantiation were
+committed. The remaining observable issues are:
 
 - `index.html` still contains `Whale25`; the owner's later stated preference was
   `LUCKY25`. This maintenance pass does not implement referral promotion changes.
-- The shortened CTA URL's final destination has not been verified.
+- The shortened CTA URL's final destination has not been independently verified
+  or recorded in the repository.
 - The three generic testimonials have no supporting evidence in the repository.
 - Bonus, betting-limit, crypto-withdrawal, and age/eligibility statements have no
   supporting source or approval record in the repository.
 - Public hosting, deployment URL, and HTTPS status are unknown.
 
-No merge, public deployment, referral signup, or outbound-link transaction is part
-of this recovery. See MAINTENANCE.md for technical checks and their recorded results.
+The structural recovery was prepared for pull request #2; any merge or deployment
+must be confirmed from GitHub and recorded in DEPLOYMENT.md. No referral signup or
+outbound-link transaction is part of this recovery. See MAINTENANCE.md for checks.
