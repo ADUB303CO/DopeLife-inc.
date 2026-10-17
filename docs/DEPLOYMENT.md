@@ -1,65 +1,72 @@
 # Deployment and release record
 
-## Current hosted release
+## Current production release (October 17, 2026)
 
-- **Status:** Live according to ShipStatic deployment and domain APIs, checked October 17, 2026.
-- **Canonical URL:** https://dopelife-inc.shipstatic.com
-- **Static deployment URL:** https://radiant-rift-t46bheb.shipstatic.com
-- **Hosting:** ShipStatic, connected account on its free plan.
+- **URL:** https://dopelife-inc.shipstatic.com
+- **Hosting:** ShipStatic (connected account).
+- **Deployment:** https://dynamic-shard-djt25s6.shipstatic.com
+- **Deployment status:** `success` (ShipStatic); no expiration scheduled.
+- **Domain status:** `live` and `verified` (ShipStatic).
 - **Source repository:** https://github.com/ADUB303CO/DopeLife-inc.
-- **Source branch:** `master`.
-- **Source commit:** `b826d8a0ee7ef794c7395ceb902f748b68457cc8` (merged recovery PR #2).
-- **Uploaded files:** `index.html`, `assets/css/styles.css`, `assets/js/main.js`.
-- **Deployment status:** `success`; no expiration (`expires: null`).
-- **Domain status:** `live`; domain verification reported `verified` by ShipStatic.
-- **Independent external HTTP/HTTPS response check:** unavailable in the execution environment; the provider-reported status is not an independent end-to-end check.
-- **Custom purchased domain:** none.
-- **Deployment method:** manual static file upload from the reviewed repository sources; **GitHub pushes do not automatically redeploy the website**.
-- **Build command / runtime server:** none. This is a static HTML/CSS/JS site.
-- **Secrets / environment variables:** none required for this version.
+- **Published branch and commit:** `master`, `444c99093aae953c2bf92ad7ff1724cc1fd7c960`.
+- **Publishing workflow:** [Publish DopeLife to ShipStatic](https://github.com/ADUB303CO/DopeLife-inc./actions/workflows/publish-shipstatic.yml).
+- **Successful deployment run:** https://github.com/ADUB303CO/DopeLife-inc./actions/runs/39077591422
+- **Files:** `index.html`, `assets/css/styles.css`, `assets/js/main.js`.
+- **Build/server:** none; this is a static website.
+- **Automated deployment:** active when site code or its publishing workflow changes on `master`. Documentation-only commits do not redeploy.
+- **Deployment credential:** encrypted GitHub Actions repository secret named `SHIP_TOKEN`. Never write or log its value.
+- **Independent browser check:** not performed by this handoff. GitHub and ShipStatic both reported success; these provider statuses do not replace a manual browser review.
 
-The public hosting step does not verify advertising statements, operator terms, testimonials, referral eligibility, or the ultimate destination of external shortened links. The owner reported verifying promotional content on October 17, 2026; that is an owner-attested review, not independently documented supporting evidence.
+## Automatic publishing
 
-## GitHub automatic publishing (configured; awaiting repository secret)
+The workflow at `.github/workflows/publish-shipstatic.yml` validates JavaScript syntax,
+stages only the three public site files, then calls the pinned ShipStatic
+Action to create a new release and relink `dopelife-inc.shipstatic.com`.
+It is triggered by changes to the published HTML/CSS/JS paths or by
+the workflow itself, and also supports manual workflow dispatch.
 
-A workflow at `.github/workflows/publish-shipstatic.yml` is installed on
-`master`. It runs on changes to the public HTML/CSS/JavaScript source or
-when started manually. It validates JavaScript syntax, stages only the three
-website files, and uses the pinned ShipStatic GitHub Action to publish and
-link the canonical project-domain alias.
+On October 17, 2026, the workflow completed successfully, including
+`Publish and link production domain`. ShipStatic confirmed that the live
+domain points to the newly created GitHub-origin deployment. The earlier
+manual deployment `radiant-rift-t46bheb.shipstatic.com` remains available
+as a previous release.
 
-**Current state as of October 17, 2026:** Workflow syntax and staging
-passed, but the actual publish step was **skipped** because no
-`SHIP_TOKEN` GitHub Actions repository secret was present.
-GitHub's green workflow status alone does not mean that a new
-release was deployed.
+If `SHIP_TOKEN` is missing, the workflow now fails explicitly rather
+than reporting a successful run with the publish step skipped.
 
-To activate automatic publishing, create a fresh ShipStatic API key or
-deploy-scoped token in ShipStatic and add it directly in GitHub's repository
-Settings > Secrets and variables > Actions > New repository secret,
-using the exact name `SHIP_TOKEN`. Do not commit the key, enter it into
-workflow YAML, or share it in messages. Use the GitHub Actions UI to
-manually run Publish DopeLife to ShipStatic once after saving the secret.
-Check that the 'Publish and link production domain' step actually
-succeeded and that the domain still points to the expected version.
+## Publishing changes
 
-Until that step succeeds, publish manually as described below. The original
-deployed snapshot remains separate from newer documentation and CI commits.
+1. Make website changes on a GitHub branch and check them locally using the README.
+2. Review and merge the change into `master`.
+3. Inspect the `Verify static landing page` and `Publish DopeLife to ShipStatic`
+   GitHub Actions runs. Confirm that the **publish step itself** reports success.
+4. Verify https://dopelife-inc.shipstatic.com in a browser, including mobile,
+   keyboard access, CSS/JS loading, outbound links and HTTPS.
+5. For changes only to documentation, automatic publishing is intentionally
+   not triggered. Use workflow dispatch when an explicit republish is needed.
 
-## Updating the site
+## Rollback and credentials
 
-1. Edit the files on a GitHub branch and review the pull request. Use `README.md` and `docs/MAINTENANCE.md` for local preview and checks.
-2. Merge reviewed changes into `master` and record the exact source commit.
-3. Upload the three site files, preserving these relative paths: `index.html`, `assets/css/styles.css`, and `assets/js/main.js`. Use the connected ShipStatic deployment tool or its account UI.
-4. Inspect the new deployment; if correct, relink `dopelife-inc.shipstatic.com` to that new deployment.
-5. Verify the page, CSS, JavaScript, links, keyboard behavior, mobile layout, and HTTPS from an external browser. Record the new deployment URL, source commit, date, and test result here.
+To roll back a deployment, relink the project domain to the last known
+working ShipStatic deployment. The original manual deployment is preserved
+at `radiant-rift-t46bheb.shipstatic.com`. Never force-push Git history
+as a substitute for rolling back a release.
 
-No GitHub/Vercel connection, continuous deployment, backend, visitor tracking, or database was added. Do not treat a GitHub merge as automatic publication.
+If a deployment credential has been disclosed, rotate/revoke it at ShipStatic
+and update the `SHIP_TOKEN` GitHub Actions secret. Do not store API keys
+in Git or in public issue comments. Check deployment runs after rotation.
 
-## Rollback
+## Promotion/content review
 
-Keep the previous deployment intact before switching the site alias. If a new release fails, relink `dopelife-inc.shipstatic.com` to the previous known-good deployment. To revert source changes, use a reviewed GitHub revert commit and publish those sources as a new static deployment; do not force-push shared history. Check the live URL and assets again after the rollback.
+The original content still includes `Whale25`, the shortened URL, legacy
+testimonials and 2025 footer text. The owner reported reviewing promotional
+content October 17, 2026; this GitHub-to-ShipStatic activation does not
+independently verify those claims, destinations, or legal eligibility.
 
-## Historical note
+## Recovery history
 
-Before recovery PR #2, the public `master` branch had no `index.html` or verified hosting configuration. An old GitHub issue named `Stake-referrals.github.io` did not establish an actual deployment. The September 28, 2026 documentation therefore listed hosting as unknown; this record supersedes that status.
+Recovery pull request #2 was merged as
+`b826d8a0ee7ef794c7395ceb902f748b68457cc8`.
+The first manually published static release was
+`radiant-rift-t46bheb.shipstatic.com`; automatic publishing became
+operational with workflow commit `444c99093aae953c2bf92ad7ff1724cc1fd7c960`.
