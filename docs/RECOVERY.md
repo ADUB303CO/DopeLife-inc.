@@ -46,6 +46,17 @@ committed. The remaining observable issues are:
   supporting source or approval record in the repository.
 - Public hosting, deployment URL, and HTTPS status are unknown.
 
-The structural recovery was prepared for pull request #2; any merge or deployment
-must be confirmed from GitHub and recorded in DEPLOYMENT.md. No referral signup or
-outbound-link transaction is part of this recovery. See MAINTENANCE.md for checks.
+## Completed merge and hosting
+
+- PR #2 was squash-merged into `master` on October 17, 2026, as commit
+  `b826d8a0ee7ef794c7395ceb902f748b68457cc8`.
+- The source files from that commit were uploaded to ShipStatic as deployment
+  `radiant-rift-t46bheb.shipstatic.com`.
+- A public domain, https://dopelife-inc.shipstatic.com, now points to the
+  uploaded snapshot. ShipStatic reports the deployment successful and domain live.
+- Manual deployment: source/documentation updates on GitHub do not
+  automatically redeploy the public site.
+- This recovery did not add signups, tracking, automated referral claims,
+  backend data storage, or outgoing-link transactions.
+
+Read DEPLOYMENT.md for the current release URL and MAINTENANCE.md for checks.
