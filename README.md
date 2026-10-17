@@ -13,15 +13,12 @@ installation, backend, database, environment file, or API key.
 ```sh
 git clone https://github.com/ADUB303CO/DopeLife-inc..git dopelife
 cd dopelife
-# Until the recovery pull request is merged:
-git switch recovery/static-site-maintenance-2026-09-28
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Open http://127.0.0.1:8000. Stop the server with Ctrl+C. The Python server is for
-local development only. After the recovery is merged, use `master` instead of the
-recovery branch. The two dots in the clone URL are intentional: the repository
-name ends with a dot.
+local development only. The recovered site is now on `master`. The two dots in the clone URL are
+intentional: the repository name ends with a dot.
 
 ## Files and responsibilities
 
@@ -47,4 +44,6 @@ must never be necessary to read the page or follow a link. No framework is neede
 - No license was present in the original repository; no license is assumed here.
 
 Read [recovery status](docs/RECOVERY.md), [maintenance](docs/MAINTENANCE.md), and
-[deployment status](docs/DEPLOYMENT.md) before treating this prototype as released.
+[deployment instructions](docs/DEPLOYMENT.md) before treating this prototype as released.
+The structural recovery was merged on 2026-10-17 via PR #2; publishing requires
+an external hosting configuration, which has not been verified or completed.
