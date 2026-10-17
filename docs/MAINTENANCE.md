@@ -44,7 +44,11 @@ Checked on 2026-09-28 UTC:
 - OWNER REVIEW: on October 17, 2026 the owner stated promotional content had
   been verified. No updated campaign copy, proof, destination URL, or operator
   approval documents were supplied to this repository as part of this recovery.
-- NOT CHECKED BY THIS RECOVERY: live hosting, referral redirect destination,
-  and promotional claim evidence.
+- On October 17, 2026, ShipStatic reported the three-file deployment successful,
+  with a live, verified alias at https://dopelife-inc.shipstatic.com.
+  An independent external browser fetch was not available during this handoff.
+- NOT INDEPENDENTLY CHECKED: referral redirect destination and promotional claim evidence.
 
-The pull request can proceed to merge review based on the owner's confirmation.
+PR #2 was squash-merged into `master` on October 17, 2026. The published
+snapshot corresponds to recovery merge commit `b826d8a0ee7ef794c7395ceb902f748b68457cc8`.
+Further GitHub edits require a separate manual deployment (see DEPLOYMENT.md).
