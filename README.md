@@ -24,8 +24,8 @@ python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Open http://127.0.0.1:8000. Stop the server with Ctrl+C. The Python server is for
-local development only. The recovered site is now on `master`. The two dots in the clone URL are
-intentional: the repository name ends with a dot.
+local development only. The recovered site is on `master`. The two dots in the
+clone URL are intentional: the repository name ends with a dot.
 
 ## Files and responsibilities
 
@@ -52,5 +52,5 @@ must never be necessary to read the page or follow a link. No framework is neede
 
 Read [recovery status](docs/RECOVERY.md), [maintenance](docs/MAINTENANCE.md), and
 [deployment instructions](docs/DEPLOYMENT.md) before treating this prototype as released.
-The structural recovery was merged on 2026-10-17 via PR #2; publishing requires
-an external hosting configuration, which has not been verified or completed.
+The recovery was merged through PR #2 on October 17, 2026. ShipStatic reports the
+published site and its project-domain alias as live. See DEPLOYMENT.md for details.
