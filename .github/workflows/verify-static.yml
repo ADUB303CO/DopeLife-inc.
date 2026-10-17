@@ -1,0 +1,60 @@
+name: Verify static landing page
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Check JavaScript syntax
+        run: node --check assets/js/main.js
+
+      - name: Check local page assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+
+          root = Path.cwd()
+
+          class AssetParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.paths = []
+
+              def handle_starttag(self, tag, attrs):
+                  for key, value in attrs:
+                      if key not in ('href', 'src') or not value:
+                          continue
+                      uri = urlsplit(value)
+                      if uri.scheme or uri.netloc or not uri.path:
+                          continue
+                      self.paths.append(unquote(uri.path))
+
+          page = root / 'index.html'
+          assert page.is_file(), 'index.html is missing'
+          parser = AssetParser()
+          parser.feed(page.read_text(encoding='utf-8'))
+
+          missing = []
+          for path in parser.paths:
+              file = root / path.lstrip('/')
+              if not file.is_file():
+                  missing.append(path)
+
+          assert not missing, 'Missing local asset(s): ' + ', '.join(missing)
+          print('HTML local asset references verified.')
+          PY
