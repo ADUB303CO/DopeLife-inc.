@@ -36,9 +36,15 @@ Checked on 2026-09-28 UTC:
   content types for the page and both assets under a subdirectory.
 - PASS: HTML parsing confirmed that legacy body text and external link targets
   were preserved; the only added body text is the keyboard skip link.
-- PENDING: browser layout, keyboard, JavaScript-disabled, missing-observer, and
-  reduced-motion checks. The environment had no browser executable; the attempted
-  Chromium download failed. These checks are not represented as passing.
-- NOT CHECKED: live hosting, external referral destinations, or content claims.
+- NOT REPRODUCED BY MAINTAINER: browser layout, keyboard, JavaScript-disabled,
+  missing-observer, and reduced-motion checks; a browser was unavailable during
+  the September 28 recovery. The owner reported completing Step 2 of the
+  recovery checklist on October 17, 2026. This is an owner-attested result, not
+  an independently observed or automated test pass.
+- OWNER REVIEW: on October 17, 2026 the owner stated promotional content had
+  been verified. No updated campaign copy, proof, destination URL, or operator
+  approval documents were supplied to this repository as part of this recovery.
+- NOT CHECKED BY THIS RECOVERY: live hosting, referral redirect destination,
+  and promotional claim evidence.
 
-The pull request remains a draft pending the browser checks above.
+The pull request can proceed to merge review based on the owner's confirmation.
