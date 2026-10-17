@@ -1,11 +1,10 @@
-/*
- * DopeLife type system: Cinzel display + Cormorant editorial + Manrope body.
- * Google Fonts are loaded via index.html with font-display: swap and system
- * fallback faces when network access or remote fonts are unavailable.
+/* DOPELIFE — Private Edition
+ * Design system: editorial Italiana + Cormorant, engraved Cinzel.
+ * No analytics or external image assets; decorative geometry is CSS-only.
  */
 :root {
     color-scheme: dark;
-    --background: #0b0b0d;
+    --background: #090a0c;
     --deep: #101113;
     --surface: #171719;
     --text: #dedbd3;
@@ -18,287 +17,41 @@
     --editorial: "Cormorant Garamond", "Baskerville", Georgia, serif;
     --sans: "Manrope", "Avenir Next", "Segoe UI", Arial, sans-serif;
 }
-
 *, *::before, *::after { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
     margin: 0;
+    min-width: 0;
     background: var(--background);
     color: var(--text);
     font-family: var(--editorial);
     font-size: 1.25rem;
-    font-weight: 500;
     line-height: 1.6;
-    letter-spacing: 0.005em;
-    font-kerning: normal;
-    font-variant-ligatures: common-ligatures;
     overflow-wrap: anywhere;
+    font-kerning: normal;
     -webkit-font-smoothing: antialiased;
 }
-
-.container {
-    width: min(calc(100% - 3rem), 1100px);
-    margin-inline: auto;
-}
-
-header {
-    padding: clamp(4rem, 8vw, 7rem) 0 clamp(3.5rem, 7vw, 5rem);
-    background: linear-gradient(180deg, #151518 0%, var(--background) 100%);
-    border-bottom: 1px solid var(--line);
-    text-align: center;
-}
-
-header h1 {
-    max-width: 20ch;
-    margin: 0 auto;
-    color: var(--champagne-light);
-    font-family: var(--serif);
-    font-size: clamp(2.2rem, 6.5vw, 5.4rem);
-    font-weight: 500;
-    letter-spacing: 0.075em;
-    line-height: 1.24;
-    text-transform: uppercase;
-    text-wrap: balance;
-}
-
-header p {
-    max-width: 70ch;
-    margin: 1.8rem auto 0;
-    color: var(--muted);
-    font-family: var(--sans);
-    font-size: clamp(0.72rem, 1.8vw, 0.9rem);
-    font-weight: 500;
-    letter-spacing: 0.20em;
-    line-height: 1.8;
-    text-transform: uppercase;
-}
-
-.hero {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    padding: clamp(5rem, 10vw, 8rem) 0;
-    background: radial-gradient(ellipse at 50% 35%, #26221c 0%, #131315 42%, #09090b 90%);
-    text-align: center;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 1.6rem;
-    border: 1px solid rgba(223, 199, 143, 0.11);
-    pointer-events: none;
-}
-
-.hero .container { position: relative; z-index: 1; }
-
-.hero h2,
-.benefits h2,
-.testimonials h2 {
-    margin: 0 auto;
-    color: var(--ivory);
-    font-family: var(--serif);
-    font-size: clamp(1.9rem, 4.4vw, 3.6rem);
-    font-weight: 400;
-    letter-spacing: 0.035em;
-    line-height: 1.32;
-    text-wrap: balance;
-}
-
-.hero h2 { max-width: 19ch; }
-
-.hero p:not(.referral-code) {
-    max-width: 62ch;
-    margin: 1.8rem auto 0;
-    color: #e2ddd2;
-    font-size: clamp(1.34rem, 2.6vw, 1.7rem);
-    font-weight: 500;
-    line-height: 1.55;
-}
-
-.hero .cta-button {
-    display: inline-block;
-    max-width: 100%;
-    margin-top: 2.5rem;
-    padding: 1.05rem 2rem;
-    background: linear-gradient(135deg, var(--champagne-light), #cbaa6b);
-    border: 1px solid #e9cb8b;
-    border-radius: 2px;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.38);
-    color: #101011;
-    font-family: var(--sans);
-    font-size: clamp(0.73rem, 1.8vw, 0.85rem);
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.hero .cta-button:hover {
-    background: var(--champagne-light);
-    box-shadow: 0 12px 32px rgba(223, 199, 143, 0.19);
-    transform: translateY(-2px);
-}
-
-.referral-code {
-    margin: 1.4rem auto 0;
-    color: var(--champagne);
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.17em;
-    text-transform: uppercase;
-}
-
-.benefits {
-    padding: clamp(5rem, 9vw, 7rem) 0;
-    background: var(--deep);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.benefits h2,
-.testimonials h2 {
-    max-width: 24ch;
-    margin-bottom: 3rem;
-    text-align: center;
-}
-
-.benefit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
-    gap: 1rem;
-}
-
-.benefit {
-    padding: clamp(1.5rem, 3vw, 2.3rem);
-    background: linear-gradient(160deg, #1b1b1d, #131315);
-    border: 1px solid var(--line);
-    text-align: center;
-    transition: border-color 180ms ease, transform 180ms ease;
-}
-
-.benefit:hover {
-    border-color: rgba(223, 199, 143, 0.55);
-    transform: translateY(-2px);
-}
-
-.benefit h3 {
-    margin: 0 0 0.9rem;
-    color: var(--champagne);
-    font-family: var(--serif);
-    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    line-height: 1.45;
-}
-
-.benefit p {
-    margin: 0;
-    color: #d9d4c9;
-    font-size: 1.3rem;
-    font-weight: 500;
-    line-height: 1.45;
-}
-
-.testimonials {
-    padding: clamp(5rem, 9vw, 7rem) 0;
-    background: linear-gradient(180deg, #101113, #0b0b0d);
-}
-
-.testimonial {
-    max-width: 850px;
-    margin: 0 auto 1rem;
-    padding: clamp(1.5rem, 4vw, 2.75rem);
-    border-left: 1px solid var(--champagne);
-    background: rgba(255, 255, 255, 0.025);
-    color: var(--ivory);
-    font-family: var(--editorial);
-    font-size: clamp(1.45rem, 2.9vw, 2rem);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.48;
-}
-
-.testimonial cite {
-    display: block;
-    margin-top: 1.2rem;
-    color: var(--champagne);
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    line-height: 1.7;
-    text-align: right;
-    text-transform: uppercase;
-}
-
-footer {
-    padding: 3rem 0;
-    background: #0a0a0c;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-family: var(--sans);
-    font-size: 0.84rem;
-    letter-spacing: 0.03em;
-    text-align: center;
-}
-
-footer p { margin: 0.6rem 0; }
-
-footer a {
-    color: var(--champagne-light);
-    text-decoration-color: var(--line);
-    text-underline-offset: 0.2em;
-}
-
-footer a:hover { text-decoration-color: currentColor; }
-
-a:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 5px;
-}
-
+.container { width: min(calc(100% - 3rem), 1100px); margin: 0 auto; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
 .skip-link {
     position: absolute;
-    z-index: 10;
+    z-index: 20;
     top: 8px;
     left: 8px;
     transform: translateY(-200%);
 }
-
 .skip-link:focus {
-    padding: 12px;
-    background: #000000;
-    color: #ffffff;
     transform: translateY(0);
+    padding: 12px 16px;
+    background: #0b0b0d;
+    color: #fff;
+    font: 600 .85rem var(--sans);
 }
-
-@media (max-width: 480px) {
-    .container { width: min(calc(100% - 2rem), 1100px); }
-    header h1 { font-size: clamp(1.95rem, 7.1vw, 2.6rem); letter-spacing: 0.045em; }
-    header p { letter-spacing: 0.10em; }
-    .hero p:not(.referral-code) { font-size: 1.35rem; }
-    .benefit p { font-size: 1.2rem; }
-    .hero::before { inset: 0.75rem; }
-    .hero .cta-button { padding: 1rem 1.15rem; letter-spacing: 0.08em; }
-    .referral-code { letter-spacing: 0.11em; }
-    .testimonials h2, .benefits h2 { margin-bottom: 2rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-    }
-}
+footer { text-align: center; }
+footer p { margin: .65rem 0; }
+footer a { color: var(--champagne-light); text-underline-offset: .25em; }
+::selection { background: var(--champagne); color: #0b0b0d; }
 
 /* ---- Private Edition: asymmetric editorial stage, art-deco engraving ---- */
 :root {
