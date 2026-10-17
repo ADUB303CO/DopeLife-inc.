@@ -69,4 +69,5 @@ jobs:
       - name: Report missing connection
         if: ${{ steps.ship_token.outputs.configured != 'true' }}
         shell: bash
-        run: echo 'No deployment attempted: configure SHIP_TOKEN, then rerun this workflow.'
+        run: |
+          echo 'No deployment attempted: configure SHIP_TOKEN, then rerun this workflow.'
