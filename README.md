@@ -1,9 +1,16 @@
 # DopeLife-inc.
 
-A recovered static landing-page prototype originally committed in December 2025.
-The legacy content describes a Stake referral page. This recovery documents and
-maintains the existing code; it does not verify its offers, endorsements, external
-destinations, or eligibility claims. It is not a production release.
+A recovered static landing-page project originally committed in December 2025.
+The legacy content describes a Stake referral page. This recovery maintains and
+documents the existing code; it does not independently verify offers, endorsements,
+external destinations, or eligibility claims. The owner reported reviewing these
+claims on October 17, 2026.
+
+**Hosted page:** https://dopelife-inc.shipstatic.com
+
+**Publishing:** The page is a publicly hosted static snapshot, not an automatic
+deployment from GitHub. See [deployment instructions](docs/DEPLOYMENT.md) for the
+exact published source commit, manual redeployment, and rollback procedure.
 
 ## Quick start
 
@@ -40,7 +47,7 @@ must never be necessary to read the page or follow a link. No framework is neede
 - Legacy marketing text and outbound links are inherited, unverified material.
 - There are no signups, authentication, visit counters, geofencing, or analytics.
 - The external placeholder image has been replaced by a local CSS gradient.
-- A working local page does not establish that any public deployment exists.
+- The published ShipStatic snapshot is manually updated; GitHub commits alone do not change it.
 - No license was present in the original repository; no license is assumed here.
 
 Read [recovery status](docs/RECOVERY.md), [maintenance](docs/MAINTENANCE.md), and
