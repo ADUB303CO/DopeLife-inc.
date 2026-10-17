@@ -1,98 +1,39 @@
-# Deployment status and handoff
+# Deployment and release record
 
-Status: recovered static site merged into `master` on 2026-10-17 by PR #2
-(commit `b826d8a0ee7ef794c7395ceb902f748b68457cc8`).
-No live deployment has been verified or created by this recovery. The closed issue named `Stake-referrals.github.io` does not
-establish a hostname or a successful release. The repository had no deployment
-workflow and no recorded GitHub Actions runs at inspection.
+## Current hosted release
 
-## Technical characteristics
+- **Status:** Live according to ShipStatic deployment and domain APIs, checked October 17, 2026.
+- **Canonical URL:** https://dopelife-inc.shipstatic.com
+- **Static deployment URL:** https://radiant-rift-t46bheb.shipstatic.com
+- **Hosting:** ShipStatic, connected account on its free plan.
+- **Source repository:** https://github.com/ADUB303CO/DopeLife-inc.
+- **Source branch:** `master`.
+- **Source commit:** `b826d8a0ee7ef794c7395ceb902f748b68457cc8` (merged recovery PR #2).
+- **Uploaded files:** `index.html`, `assets/css/styles.css`, `assets/js/main.js`.
+- **Deployment status:** `success`; no expiration (`expires: null`).
+- **Domain status:** `live`; domain verification reported `verified` by ShipStatic.
+- **Independent external HTTP/HTTPS response check:** unavailable in the execution environment; the provider-reported status is not an independent end-to-end check.
+- **Custom purchased domain:** none.
+- **Deployment method:** manual static file upload from the reviewed repository sources; **GitHub pushes do not automatically redeploy the website**.
+- **Build command / runtime server:** none. This is a static HTML/CSS/JS site.
+- **Secrets / environment variables:** none required for this version.
 
-- Entry point: `index.html`.
-- Assets: `assets/css/styles.css` and `assets/js/main.js`.
-- Build command: none. Runtime server application: none.
-- Runtime environment variables and secrets: none.
-- Asset paths are relative and support a subdirectory base path.
-- Local development uses Python's HTTP server; this is not production hosting.
+The public hosting step does not verify advertising statements, operator terms, testimonials, referral eligibility, or the ultimate destination of external shortened links. The owner reported verifying promotional content on October 17, 2026; that is an owner-attested review, not independently documented supporting evidence.
 
-## Information needed for an accountable release
+## Updating the site
 
-| Field | Current value |
-| --- | --- |
-| Hosting service and owner | Unconfirmed |
-| Publishing branch / directory | Proposed `master` / repository root (`.`); not yet configured |
-| Canonical public URL | Unconfirmed |
-| Custom domain and DNS owner | Unconfirmed |
-| HTTPS verification date | Not verified |
-| Released commit / deployment ID | None; latest confirmed source recovery merge `b826d8a0ee7ef794c7395ceb902f748b68457cc8` |
-| Previous working deployment | None established |
+1. Edit the files on a GitHub branch and review the pull request. Use `README.md` and `docs/MAINTENANCE.md` for local preview and checks.
+2. Merge reviewed changes into `master` and record the exact source commit.
+3. Upload the three site files, preserving these relative paths: `index.html`, `assets/css/styles.css`, and `assets/js/main.js`. Use the connected ShipStatic deployment tool or its account UI.
+4. Inspect the new deployment; if correct, relink `dopelife-inc.shipstatic.com` to that new deployment.
+5. Verify the page, CSS, JavaScript, links, keyboard behavior, mobile layout, and HTTPS from an external browser. Record the new deployment URL, source commit, date, and test result here.
 
-Record actual evidence here rather than guessing a URL from the repository name.
-Keep credentials out of the repository. Resolving the inherited content issues in
-RECOVERY.md is separate from verifying the technical files.
+No GitHub/Vercel connection, continuous deployment, backend, visitor tracking, or database was added. Do not treat a GitHub merge as automatic publication.
 
-## Rollback record
+## Rollback
 
-For any future approved release, record the released commit and the previous
-working deployment before changing hosting. Prefer the host's previous-version
-restore mechanism. For source changes, revert the relevant commit on a new branch
-and review the result; do not force-push shared history. Re-check the page and asset
-URLs after a rollback. The pre-recovery commit lacks `index.html` and should not be
-mistaken for a known-working deployed version.
+Keep the previous deployment intact before switching the site alias. If a new release fails, relink `dopelife-inc.shipstatic.com` to the previous known-good deployment. To revert source changes, use a reviewed GitHub revert commit and publish those sources as a new static deployment; do not force-push shared history. Check the live URL and assets again after the rollback.
 
-## Free static hosting route (proposed, not configured)
+## Historical note
 
-Owner preference: a free, no-surprise-billing setup with minimal limitations.
-**Cloudflare Pages Free** is a strong option for this plain HTML, CSS, and JS
-site. Its static asset requests are advertised as free and unlimited. Pages
-Free still has technical limits (including 500 builds/month, 20,000 files per
-site, and 25 MiB maximum per individual file), plus acceptable-use terms. Do
-not describe it as unrestricted hosting. As this is a casino referral page,
-the owner should confirm the hosting provider's policies, local legal
-requirements and any affiliate program rules before public release.
-
-Cloudflare product docs:
-- https://developers.cloudflare.com/pages/functions/pricing/
-- https://developers.cloudflare.com/pages/platform/limits/
-- https://developers.cloudflare.com/pages/framework-guides/deploy-anything/
-
-### Site settings for Cloudflare Pages Git integration
-
-1. Use a free Cloudflare account, open **Workers & Pages**, create a **Pages**
-   project, and **Import an existing Git repository**.
-2. Authorize just `ADUB303CO/DopeLife-inc.` if GitHub allows selecting it
-   individually.
-3. Set production branch: `master`.
-4. Framework preset: **None**. Build command: leave blank (or `exit 0`).
-5. Root directory: repository root. Build output directory: `.` (the folder
-   containing `index.html`).
-6. Publish and record the actual assigned `*.pages.dev` URL below; never
-   invent the hostname. Verify HTTPS, `/`, the stylesheet and script URLs.
-7. Confirm mobile view, reduced motion and link destination behavior on the
-   deployed domain. Record host policy checks and verified referral terms.
-8. Keep this plain static site free of Pages Functions/Workers/database/paid
-   add-ons unless expressly approved. Any dynamic features have different
-   free tier quotas. Never enable paid upgrades automatically.
-
-### Deployment evidence to fill after publishing
-
-- Hosting account/owner: **not connected or verified**
-- Public URL: **not assigned/verified**
-- Production branch: **proposed `master`**
-- Latest verified deployed commit: **none**
-- Published at (UTC): **not deployed**
-- HTTPS check: **pending**
-- Operator promotion / jurisdiction review: **owner-reported content review;
-  third-party documentation not deposited here**
-
-### Provider restrictions
-
-GitHub Pages terms prohibit using Pages as free hosting for a site primarily
-directed at commercial transactions; Vercel Hobby restricts commercial
-affiliate-link sites. Therefore neither is the proposed host for this
-commercial referral landing page.
-- https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
-- https://vercel.com/docs/limits/fair-use-guidelines
-
-The free host is a recommendation, not evidence that the gambling-related
-promotion complies with provider policies or applicable laws.
+Before recovery PR #2, the public `master` branch had no `index.html` or verified hosting configuration. An old GitHub issue named `Stake-referrals.github.io` did not establish an actual deployment. The September 28, 2026 documentation therefore listed hosting as unknown; this record supersedes that status.
