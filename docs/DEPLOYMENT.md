@@ -20,6 +20,32 @@
 
 The public hosting step does not verify advertising statements, operator terms, testimonials, referral eligibility, or the ultimate destination of external shortened links. The owner reported verifying promotional content on October 17, 2026; that is an owner-attested review, not independently documented supporting evidence.
 
+## GitHub automatic publishing (configured; awaiting repository secret)
+
+A workflow at `.github/workflows/publish-shipstatic.yml` is installed on
+`master`. It runs on changes to the public HTML/CSS/JavaScript source or
+when started manually. It validates JavaScript syntax, stages only the three
+website files, and uses the pinned ShipStatic GitHub Action to publish and
+link the canonical project-domain alias.
+
+**Current state as of October 17, 2026:** Workflow syntax and staging
+passed, but the actual publish step was **skipped** because no
+`SHIP_TOKEN` GitHub Actions repository secret was present.
+GitHub's green workflow status alone does not mean that a new
+release was deployed.
+
+To activate automatic publishing, create a fresh ShipStatic API key or
+deploy-scoped token in ShipStatic and add it directly in GitHub's repository
+Settings > Secrets and variables > Actions > New repository secret,
+using the exact name `SHIP_TOKEN`. Do not commit the key, enter it into
+workflow YAML, or share it in messages. Use the GitHub Actions UI to
+manually run Publish DopeLife to ShipStatic once after saving the secret.
+Check that the 'Publish and link production domain' step actually
+succeeded and that the domain still points to the expected version.
+
+Until that step succeeds, publish manually as described below. The original
+deployed snapshot remains separate from newer documentation and CI commits.
+
 ## Updating the site
 
 1. Edit the files on a GitHub branch and review the pull request. Use `README.md` and `docs/MAINTENANCE.md` for local preview and checks.
