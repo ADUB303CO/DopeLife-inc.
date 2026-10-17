@@ -52,8 +52,8 @@ jobs:
             echo 'configured=true' >> "$GITHUB_OUTPUT"
           else
             echo 'configured=false' >> "$GITHUB_OUTPUT"
-            echo 'ShipStatic automatic publishing is not active until SHIP_TOKEN is configured.' >> "$GITHUB_STEP_SUMMARY"
-            echo 'Create a ShipStatic API key in your connected account and add it as the GitHub Actions repository secret SHIP_TOKEN.' >> "$GITHUB_STEP_SUMMARY"
+            echo '::error::SHIP_TOKEN is missing. Set the encrypted repository Actions secret before deploying.'
+            exit 1
           fi
 
       - name: Publish and link production domain
@@ -66,8 +66,3 @@ jobs:
           labels: 'dopelife,production'
           github-token: ''
 
-      - name: Report missing connection
-        if: ${{ steps.ship_token.outputs.configured != 'true' }}
-        shell: bash
-        run: |
-          echo 'No deployment attempted: configure SHIP_TOKEN, then rerun this workflow.'
