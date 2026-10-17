@@ -27,11 +27,13 @@ body {
     margin: 0;
     background: var(--background);
     color: var(--text);
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.76;
+    font-family: var(--editorial);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
     letter-spacing: 0.005em;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
     overflow-wrap: anywhere;
     -webkit-font-smoothing: antialiased;
 }
@@ -65,6 +67,7 @@ header p {
     max-width: 70ch;
     margin: 1.8rem auto 0;
     color: var(--muted);
+    font-family: var(--sans);
     font-size: clamp(0.72rem, 1.8vw, 0.9rem);
     font-weight: 500;
     letter-spacing: 0.20em;
@@ -109,8 +112,10 @@ header p {
 .hero p:not(.referral-code) {
     max-width: 62ch;
     margin: 1.8rem auto 0;
-    color: var(--muted);
-    font-size: clamp(0.96rem, 1.5vw, 1.1rem);
+    color: #e2ddd2;
+    font-size: clamp(1.34rem, 2.6vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.55;
 }
 
 .hero .cta-button {
@@ -143,6 +148,7 @@ header p {
 .referral-code {
     margin: 1.4rem auto 0;
     color: var(--champagne);
+    font-family: var(--sans);
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.17em;
@@ -194,8 +200,10 @@ header p {
 
 .benefit p {
     margin: 0;
-    color: var(--muted);
-    font-size: 0.94rem;
+    color: #d9d4c9;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.45;
 }
 
 .testimonials {
@@ -236,6 +244,7 @@ footer {
     background: #0a0a0c;
     border-top: 1px solid var(--line);
     color: var(--muted);
+    font-family: var(--sans);
     font-size: 0.84rem;
     letter-spacing: 0.03em;
     text-align: center;
@@ -275,6 +284,8 @@ a:focus-visible {
     .container { width: min(calc(100% - 2rem), 1100px); }
     header h1 { font-size: clamp(1.95rem, 7.1vw, 2.6rem); letter-spacing: 0.045em; }
     header p { letter-spacing: 0.10em; }
+    .hero p:not(.referral-code) { font-size: 1.35rem; }
+    .benefit p { font-size: 1.2rem; }
     .hero::before { inset: 0.75rem; }
     .hero .cta-button { padding: 1rem 1.15rem; letter-spacing: 0.08em; }
     .referral-code { letter-spacing: 0.11em; }
